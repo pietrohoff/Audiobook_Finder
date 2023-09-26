@@ -41,7 +41,7 @@ Para executar a aplicação, use o seguinte comando:
 
   `node app.js`
 
-Isso iniciará um servidor local na porta 3000. Você pode acessar os vídeos do YouTube pesquisados em http://localhost:3000/videos no seu navegador.
+Isso iniciará um servidor local na porta 3000. Você pode acessar os vídeos do YouTube pesquisados em http://localhost:3000 no seu navegador.
 
 
 ## Contribuição
