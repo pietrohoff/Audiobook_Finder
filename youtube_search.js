@@ -1,4 +1,3 @@
-
 const { google } = require('googleapis');
 const fs = require('fs');
 const config = JSON.parse(fs.readFileSync('config.json', 'utf-8'));
@@ -15,6 +14,9 @@ const searchParams = {
   part: 'snippet', // Inclui informações de snippet
   q: 'audio book', // Termo de pesquisa
   maxResults: 20, // Número máximo de resultados
+  relevanceLanguage: 'pt', // Restringe os resultados a vídeos em português
+  // videoCategoryId: '24', // ID da categoria "ficção científica"
+  // type: 'video', // Defina o tipo como 'video'
 };
 
 // Função para buscar vídeos no YouTube
@@ -30,7 +32,7 @@ async function searchYouTubeVideos() {
         console.log(`   Link: https://www.youtube.com/watch?v=${video.id.videoId}`);
       });
     } else {
-      console.log('Nenhum vídeo encontrado.');
+      console.log('Nenhum vídeo encontrado na categoria "ficção científica".');
     }
   } catch (error) {
     console.error('Erro ao buscar vídeos no YouTube:', error.message);
@@ -39,13 +41,3 @@ async function searchYouTubeVideos() {
 
 // Chama a função para buscar vídeos
 searchYouTubeVideos();
-
-
-
-
-
-
-
-
-
-
