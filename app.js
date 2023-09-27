@@ -14,50 +14,50 @@ const apiKey = config.youtubeApiKey;
 
 // Crie um cliente para acessar a API do YouTube
 const youtube = google.youtube({
-    version: 'v3',
-    auth: apiKey,
+  version: 'v3',
+  auth: apiKey,
 });
 
 // Parâmetros da pesquisa
 const searchParams = {
-    part: 'snippet', // Inclui informações de snippet
-    q: 'audio book', // Termo de pesquisa
-    maxResults: 20, // Número máximo de resultados
-    relevanceLanguage: 'pt', // Restringe os resultados a vídeos em português
+  part: 'snippet', // Inclui informações de snippet
+  q: 'audio book', // Termo de pesquisa
+  maxResults: 20, // Número máximo de resultados
+  relevanceLanguage: 'pt', // Restringe os resultados a vídeos em português
 };
 
 // Função para buscar vídeos no YouTube
 async function searchYouTubeVideos() {
-    try {
-        const response = await youtube.search.list(searchParams);
+  try {
+    const response = await youtube.search.list(searchParams);
 
-        if (response.data.items && response.data.items.length > 0) {
-            const videos = response.data.items;
-            return videos;
-        } else {
-            return [];
-        }
-    } catch (error) {
-        console.error('Erro ao buscar vídeos no YouTube:', error.message);
-        return [];
+    if (response.data.items && response.data.items.length > 0) {
+      const videos = response.data.items;
+      return videos;
+    } else {
+      return [];
     }
+  } catch (error) {
+    console.error('Erro ao buscar vídeos no YouTube:', error.message);
+    return [];
+  }
 }
 app.get('/', async (req, res) => {
 
-    let pageTitle = ''; // Defina a variável pageTitle aqui
-    let videos = [];    // Defina a variável videos aqui
+  let pageTitle = ''; // Defina a variável pageTitle aqui
+  let videos = [];    // Defina a variável videos aqui
 
-    try {
-        videos = await searchYouTubeVideos();
+  try {
+    videos = await searchYouTubeVideos();
 
-        if (videos.length > 0) {
-            pageTitle = videos[0].snippet.title; // Atualize o pageTitle com o título do primeiro vídeo
-        }
-    } catch (error) {
-        console.error('Erro ao buscar vídeos no YouTube:', error.message);
+    if (videos.length > 0) {
+      pageTitle = videos[0].snippet.title; // Atualize o pageTitle com o título do primeiro vídeo
     }
+  } catch (error) {
+    console.error('Erro ao buscar vídeos no YouTube:', error.message);
+  }
 
-    res.send(`
+  res.send(`
       <!DOCTYPE html>
       <html>
       <head>
@@ -99,5 +99,5 @@ app.get('/', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Servidor em execução em http://localhost:${port}`);
+  console.log(`Servidor em execução em http://localhost:${port}`);
 });
