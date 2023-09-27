@@ -44,14 +44,14 @@ async function searchYouTubeVideos() {
 }
 app.get('/', async (req, res) => {
 
-  let pageTitle = ''; // Defina a variável pageTitle aqui
-  let videos = [];    // Defina a variável videos aqui
+  let pageTitle = ''; 
+  let videos = [];    
 
   try {
     videos = await searchYouTubeVideos();
 
     if (videos.length > 0) {
-      pageTitle = videos[0].snippet.title; // Atualize o pageTitle com o título do primeiro vídeo
+      pageTitle = videos[0].snippet.title; 
     }
   } catch (error) {
     console.error('Erro ao buscar vídeos no YouTube:', error.message);
