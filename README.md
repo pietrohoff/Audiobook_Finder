@@ -19,6 +19,7 @@ Antes de executar este projeto, é necessário configurar a sua chave de API do 
     "youtubeApiKey": "SUA_CHAVE_DE_API_DO_YOUTUBE"
   }
   `
+  
 Substitua "SUA_CHAVE_DE_API_DO_YOUTUBE" pela chave de API que você gerou.
 
 ## Instalação
@@ -28,8 +29,8 @@ Certifique-se de ter o Node.js e o npm instalados no seu sistema. Você pode bai
 
 1. Clone este repositório:
 
-  `git clone https://github.com/seu-usuario/seu-repositorio.git
-  cd seu-repositorio`  
+  `git clone https://github.com/pietrohoff/Audiobook_Finder.git`
+  `cd seu-repositorio`  
 
 2. Instale as dependências:
 
